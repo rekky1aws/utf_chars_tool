@@ -1,7 +1,42 @@
 #!/usr/bin/node
 const toReplace = {
 	"é": "&éacute;",
+	"€": "&euro;",
+	"ç": "&ccedil;",
+	"á":"&acute;",
+	"â":"&acirc;",
+	"à":"&agrave;",
+	"è":"&egrave;",
+	"é":"&eacute;",
+	"ê":"&ecirc;",
+	"œ":"&oelig;",
+	"î":"&icirc;",
+	"í":"&iacute;",
+	"ò":"&ograve;",
+	"ó":"&oacute;",
+	"ô":"&ocirc;",
+	"ù":"&ugrave;",
+	"ú":"&uacute;",
+	"û":"&ucirc;",
+	"’":"&rsquo;",
+	"'":"&rsquo;",
+	"...":"&hellip;",
+	"«":"&laquo;",
+	"»":"&raquo;",
+	"Ë":"&euml;",
+	"Ï":"&iuml;",
 };
+
+/*
+’	&rsquo;
+...	&hellip;
+«	&laquo;
+»	&raquo;
+Ë	&euml;
+Ï	&iuml;
+€	&euro;
+
+*/
 
 const fileList = process.argv.slice(2).filter(x => {
 	if (x.slice(-5) === ".html")
