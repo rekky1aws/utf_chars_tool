@@ -54,18 +54,14 @@ if (fileList.length >= 1) {
 		fileList.forEach(sourceFilename => {
 			const destFilename = "dest/" + sourceFilename;
 			const file = fs.readFile(sourceFilename, 'utf-8', (err, data) => {
+				let text = data;
 				if (err) {
 					return console.error(err);
 				}
-				let text = data.split('');
-				text.forEach((letter, index) => {
-					Object.keys(toReplace).forEach(element => {
-						if (letter === element) {
-							text[index] = toReplace[element];
-						}
-					});
+				Object.keys(toReplace).forEach(element => {
+					text = text.replaceAll(element, toReplace[element])
 				});
-				fs.writeFile(destFilename, text.join(''), 'utf-8', err => {
+				fs.writeFile(destFilename, text, 'utf-8', err => {
 					if (err) {
 						console.error(err);
 					} else {
