@@ -28,17 +28,6 @@ const toReplace = {
 	"%%frist_name%%":"%%first_name%%",
 };
 
-/*
-’	&rsquo;
-...	&hellip;
-«	&laquo;
-»	&raquo;
-Ë	&euml;
-Ï	&iuml;
-€	&euro;
-
-*/
-
 const fileList = process.argv.slice(2).filter(x => {
 	if (x.slice(-5) === ".html")
 	{
@@ -59,6 +48,7 @@ if (fileList.length >= 1) {
 				if (err) {
 					return console.error(err);
 				}
+				text = text.replaceAll(/<!--.+-->/gim, "");
 				Object.keys(toReplace).forEach(element => {
 					text = text.replaceAll(element, toReplace[element])
 				});
