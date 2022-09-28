@@ -25,6 +25,7 @@ const toReplace = {
 	"»":"&raquo;",
 	"Ë":"&euml;",
 	"Ï":"&iuml;",
+	"%%frist_name%%":"%%first_name%%",
 };
 
 /*
