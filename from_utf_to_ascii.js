@@ -26,6 +26,7 @@ const toReplace = {
 	"Ë":"&euml;",
 	"Ï":"&iuml;",
 	"%%frist_name%%":"%%first_name%%",
+	"href":"target=\"_blank\" href",
 };
 
 const fileList = process.argv.slice(2).filter(x => {
