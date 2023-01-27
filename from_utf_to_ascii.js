@@ -26,7 +26,7 @@ const toReplace = {
 	"Ë":"&euml;",
 	"Ï":"&iuml;",
 	"%%frist_name%%":"%%first_name%%",
-	"href":"target=\"_blank\" href",
+	//"href":"target=\"_blank\" href",
 };
 
 const fileList = process.argv.slice(2).filter(x => {
@@ -49,10 +49,31 @@ if (fileList.length >= 1) {
 				if (err) {
 					return console.error(err);
 				}
-				text = text.replaceAll(/<!--.+-->/gim, "");
+
+				// Supression des target="_blank" dans le but d'homogénéiser
+				text = text.replace(/target=\"_blank\" /gim, "");
+
+				// Suppression des commentaires
+				text = text.replace(/<!--.+-->/gim, "");
+
+				// Remplacement des caractères présents dans l'objet toReplace
 				Object.keys(toReplace).forEach(element => {
-					text = text.replaceAll(element, toReplace[element])
+					let flag = true;
+					while(flag) {
+						let text2 = text.replace(element, toReplace[element]);
+						if (text !== text2) {
+							text = text2;
+						} else {
+							flag = false;
+						}
+						// console.log(text);
+					}
 				});
+
+				// Ajout des target blank
+				text = text.replace(/href/gim, "target=\"_blank\" href");
+
+				// Ecriture du nouveau fichier dans le dossier dest/
 				fs.writeFile(destFilename, text, 'utf-8', err => {
 					if (err) {
 						console.error(err);
