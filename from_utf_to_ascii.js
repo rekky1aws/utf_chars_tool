@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const toReplace = {
-	"é": "&éacute;",
+	"é": "&eacute;",
 	"€": "&euro;",
 	"ç": "&ccedil;",
 	"á":"&acute;",
