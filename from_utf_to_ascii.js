@@ -85,5 +85,5 @@ if (fileList.length >= 1) {
 		});
 	});
 } else {
-	console.error("At least one file is required");
+	console.error("At least one HTML file is required");
 }
